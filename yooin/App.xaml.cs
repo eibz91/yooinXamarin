@@ -66,7 +66,7 @@ namespace yooin
 
 		protected override void OnResume()
 		{
-			// Handle when your app resumes XD
+			// Handle when your app resumes
 		}
 	}
 }
