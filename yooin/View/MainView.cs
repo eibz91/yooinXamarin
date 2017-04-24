@@ -17,6 +17,8 @@ namespace yooin
  			tPush.saveCloud(iIdCliente);
 			objContent.setCustomView(web, 0, 0, 1, 1);
 			Content = objContent.Content;
+
+
 		}
 		protected override void OnAppearing()
 		{
@@ -25,9 +27,8 @@ namespace yooin
 
 
 		public static void stopLoading() {
-
+			
 		}
-
 
 	}
 }

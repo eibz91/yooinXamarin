@@ -31,5 +31,6 @@ namespace yooin.Droid
 		public static string[] SENDER_IDS = new string[] { EndPoints.FCMSENDERID };
 
 
+
 	}
 }

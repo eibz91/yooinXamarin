@@ -8,11 +8,12 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Gcm.Client;
+using Xamarin.Forms;
 
 namespace yooin.Droid
 {
-	[Activity(Label = "yooin.Droid", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true , ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation )]
-	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+	[Activity(Label = "yooin", Icon = "@drawable/yoiinlogo",Theme = "@style/MyTheme", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity 
 	{
 		private Action<int, Result, Intent> _resultCallback;
 		public static MainActivity CurrentActivity { get; private set; }
@@ -29,15 +30,21 @@ namespace yooin.Droid
 			LoadApplication(new App());
 			try
 			{
+				//var asdas = ((Activity)Forms.Context).Window;
+				//asdas.SetSoftInputMode(SoftInput.AdjustResize);
+				//asdas.SetClipToOutline(false);
 				GcmClient.CheckDevice(this);
 				GcmClient.CheckManifest(this);
 				GcmClient.Register(this, PushHandlerBroadcastReceiver.SENDER_IDS);
+
 			}
 			catch (Exception ex)
 	        {
 				System.Diagnostics.Debug.WriteLine(ex.Message); 
 	        }
 		}
+
+
 
 		//file chooser
 		public void StartActivity2(Intent intent, int requestCode, Action<int, Result, Intent> resultCallback)

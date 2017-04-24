@@ -15,7 +15,7 @@ namespace yooin
 		Label lblTitleName = ViewFactory.createLabel("Yooin App");
 		BoxView line = ViewFactory.createBoxView(Color.FromHex("#23B14D"), 1);
 		BoxView blueHeader = ViewFactory.createBoxView(Color.FromHex("#0084BF"), 1);
-		Image imgLogo = ViewFactory.createImageView(ImageSource.FromFile(".png"), Aspect.AspectFit);
+		Image imgLogo = ViewFactory.createImageView(ImageSource.FromFile("yoiinlogo.png"), Aspect.AspectFit);
 		Image imgLogoHeaderNemak = ViewFactory.createImageView(ImageSource.FromFile(".png"), Aspect.AspectFit);
 		Image imgpassword = ViewFactory.createImageView(ImageSource.FromFile(".png"), Aspect.AspectFit);
 		Image imgUser = ViewFactory.createImageView(ImageSource.FromFile(".png"), Aspect.AspectFit);
@@ -52,13 +52,13 @@ namespace yooin
 			
 
 			//header azul
-			objContent.setCustomView(blueHeader, 0, 0, 1, .18);
+			objContent.setCustomView(blueHeader, 0, 0, 1, .1);
 			//header verde
 			//objContent.setCustomViewRelative(blueHeader, line, -1, .0, 1, .008);
 			objContent.setCustomView(imgLogoHeaderNemak, 0, 0.03, .5, .13);
 			//imagen logo
-			objContent.setCustomHorizontalCenterViewSquare(imgLogo, .22, .33);
-			objContent.setCustomViewRelative(blueHeader, lblTitleName, -0.45, -.21, 1, .07);
+			objContent.setCustomHorizontalCenterViewSquare(imgLogo, .19, .33);
+			objContent.setCustomViewRelative(blueHeader, lblTitleName, -0.45, -25, 1, .07);
 
 			//header azul
 			objContent.setCustomView(blueHeader2, 0, .9, 1, .1);
@@ -70,8 +70,8 @@ namespace yooin
 
 			objContent.setLoadingScreenSize(.4, .4);
 
-			objContent.setCustomView(entPassword, .1, .6, .8, .07);
-			objContent.setCustomViewRelative(entPassword, entUser, -1, -3.1, .8, .07);
+			objContent.setCustomView(entPassword, .1, .6, .8, .09);
+			objContent.setCustomViewRelative(entPassword, entUser, -1, -3.1, .8, .09);
 			objContent.setCustomHorizontalCenterView(btnLogin, .75, .4, .1);
 			objContent.setCustomViewRelative(entPassword, imgpassword, .05, -1, .09, .09);
 			objContent.setCustomViewRelative(entUser, imgUser, .06, -1, .09, .09);

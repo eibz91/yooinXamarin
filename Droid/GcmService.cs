@@ -14,6 +14,10 @@ using Java.Lang;
 [assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
 namespace yooin.Droid
 {
+[BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
+[IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE }, Categories = new string[] { "@PACKAGE_NAME@" })]
+[IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_REGISTRATION_CALLBACK }, Categories = new string[] { "@PACKAGE_NAME@" })]
+[IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_LIBRARY_RETRY }, Categories = new string[] { "@PACKAGE_NAME@" })]
 	[Service]
 
 	public class GcmService : GcmServiceBase
@@ -42,11 +46,11 @@ namespace yooin.Droid
 				}
 			}
 
-			// Retrieve the message
-			var prefs = GetSharedPreferences(context.PackageName, FileCreationMode.Private);
-			var edit = prefs.Edit();
-			edit.PutString("last_msg", msg);
-			edit.Commit();
+			//// Retrieve the message
+			//var prefs = GetSharedPreferences(context.PackageName, FileCreationMode.Private);
+			//var edit = prefs.Edit();
+			//edit.PutString("last_msg", msg);
+			//edit.Commit();
 
 			if (!string.IsNullOrEmpty(msg))
 			{
@@ -57,6 +61,7 @@ namespace yooin.Droid
 		protected override void OnRegistered(Context context, string registrationId)
 		{
 			tPush.saveLocal(registrationId,1);
+//APA91bE4wgusCHErDtR5UaG5XbFNnM-gAjDstG4xdnPAzoxGsMx2qZT-tpzB2bw74lg_3gly4yH8QhUTf-hwT6tMPKyKVXcf3AyIibcahDh68qimFdCGdcE
 		}
 
 		protected override void OnUnRegistered(Context context, string registrationId)

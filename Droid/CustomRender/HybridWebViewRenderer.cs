@@ -1,6 +1,8 @@
 ﻿using System;
 using Android.App;
 using Android.Content;
+using Android.Support.V4.Widget;
+using Android.Views;
 using Android.Webkit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -12,13 +14,18 @@ namespace yooin.Droid
 {
 	public class HybridWebViewRenderer : ViewRenderer<HybridWebView, Android.Webkit.WebView>
 	{
+
 		const string JavaScriptFunction = "function invokeCSharpAction(data){jsBridge.invokeAction(data);}";
+	    const string JavaScriptFunction2 = "function setScrollViewFocus(data){jsBridge.invokeAction2(data);}";
+		const string JavaScriptFunction3 = "function emptyScrollViewFocus(data){jsBridge.invokeAction3(data);}";
+
+
 		IValueCallback mUploadMessage;
 		private static int FILECHOOSER_RESULTCODE = 1;
-
 		protected override void OnElementChanged(ElementChangedEventArgs<HybridWebView> e)
 		{
 			base.OnElementChanged(e);
+
 			Android.Webkit.WebView.SetWebContentsDebuggingEnabled(true);
 			if (Control == null)
 			{
@@ -29,7 +36,6 @@ namespace yooin.Droid
 				var chrome = new FileChooserWebChromeClient();
 				webView.Settings.JavaScriptEnabled = true;
 				webView.SetWebChromeClient(chrome);
-
 			}
 			if (e.OldElement != null)
 			{
@@ -37,6 +43,7 @@ namespace yooin.Droid
 				var hybridWebView = e.OldElement as HybridWebView;
 
 				hybridWebView.Cleanup();
+
 			}
 			if (e.NewElement != null)
 			{
@@ -49,13 +56,14 @@ namespace yooin.Droid
 				Control.Settings.DomStorageEnabled = true;
 				Control.Settings.JavaScriptEnabled = true;
 				Control.Settings.SetSupportZoom(true);
-				Control.Settings.BuiltInZoomControls = true;
 				Control.Settings.SetGeolocationEnabled(true);
 				Control.LoadUrl(Element.Uri);
 				InjectJS(JavaScriptFunction);
+                InjectJS(JavaScriptFunction2);
+                 InjectJS(JavaScriptFunction3);
+
 			}
 		}
-
 		void InjectJS(string script)
 		{
 			if (Control != null)
@@ -63,7 +71,7 @@ namespace yooin.Droid
 				Control.LoadUrl(string.Format("javascript: {0}", script));
 			}
 		}
-		protected  void OnActivityResult(int requestCode, Result resultCode, Intent intent)
+		protected void OnActivityResult(int requestCode, Result resultCode, Intent intent)
 		{
 			if (requestCode == FILECHOOSER_RESULTCODE)
 			{
@@ -77,14 +85,28 @@ namespace yooin.Droid
 			}
 		}
 
+		public override void SetOnKeyListener(Android.Views.View.IOnKeyListener l)
+		{
+			base.SetOnKeyListener(l);
+		}
+
+		public void scrollHope(bool empty)
+		{
+
+			if (empty)
+			{
+				this.ScrollY = 0;
+			}
+			else 
+			{
+				int space = 0;
+				space = (int)(Height*(.45));
+				this.ScrollY = space;
+			}
 
 
-
-
-
-
+		}
 	}
-
 	public class FileChooserWebChromeClient : WebChromeClient
 	{
 		Action<IValueCallback, Java.Lang.String, Java.Lang.String> callback;
@@ -170,6 +192,4 @@ namespace yooin.Droid
 	
 
 	}
-
-
 }

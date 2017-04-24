@@ -195,5 +195,6 @@ namespace yooin
 			aiLoading.IsRunning = bEnble;
 		}
 
+
 	}
 }
