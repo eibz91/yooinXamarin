@@ -26,8 +26,8 @@ namespace yooin.Droid
 			base.OnCreate(bundle);
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
-
-			LoadApplication(new App());
+			string version = Android.OS.Build.VERSION.Release;
+			LoadApplication(new App(version));
 			try
 			{
 				//var asdas = ((Activity)Forms.Context).Window;

@@ -48,6 +48,12 @@ namespace yooin.Droid
 			if (e.NewElement != null)
 			{
 
+				CookieManager cm = CookieManager.Instance;
+				cm.RemoveAllCookie();
+				cm.RemoveSessionCookie();
+
+				Control.ClearCache(true);
+				Control.ClearHistory();
 				Control.AddJavascriptInterface(new JSBridge(this), "jsBridge");
 				Control.Settings.AllowFileAccess = true;
 				Control.Settings.AllowContentAccess = true;

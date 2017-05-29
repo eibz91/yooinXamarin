@@ -48,5 +48,23 @@ namespace yooin
 				IsPassword = bPasswordMask
 			};
 		}
+
+		public static CustomEntry CreateCustomEntry(string sPlaceHolder, bool bPasswordMask,KeyboardType kb)
+		{
+
+			return new CustomEntry
+			{
+				Placeholder = sPlaceHolder,
+				IsPassword = bPasswordMask,
+				kbt = kb
+			};
+		}
+
+		public enum KeyboardType { 
+			text=0,
+			password=1,
+			phone=2
+		
+		}
 	}
 }

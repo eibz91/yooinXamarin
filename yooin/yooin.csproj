@@ -51,6 +51,7 @@
     <Compile Include="Utility\tUser.cs" />
     <Compile Include="Utility\Response.cs" />
     <Compile Include="Utility\User.cs" />
+    <Compile Include="Utility\CustomEntry.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">

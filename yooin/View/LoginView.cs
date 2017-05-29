@@ -8,9 +8,11 @@ namespace yooin
 	public class LoginView : ContentPage
 	{
 		public static bool fistAparence = true;
+		string sVersion = "";
+
 		Entry entUser = ViewFactory.createEntry("User", false);
 		Entry entPassword = ViewFactory.createEntry("Password", true);
-		Image imgSettings = ViewFactory.createImageView(ImageSource.FromFile("Setting_white.png"), Aspect.AspectFit);
+		Image imgSettings = ViewFactory.createImageView(ImageSource.FromFile("settingwhite.png"), Aspect.AspectFit);
 		Label lblVerson = ViewFactory.createLabel("Ver. 1.00 ");
 		Label lblTitleName = ViewFactory.createLabel("Yooin App");
 		BoxView line = ViewFactory.createBoxView(Color.FromHex("#23B14D"), 1);
@@ -25,8 +27,9 @@ namespace yooin
 		TapGestureRecognizer tap = new TapGestureRecognizer();
 		BaseRelativeLayout objContent = new BaseRelativeLayout();
 		int iIdCliente = 2;
-		public LoginView()
+		public LoginView(string sVersion)
 		{
+			this.sVersion = sVersion;
 			NavigationPage.SetHasNavigationBar(this, false);
 			initialiceView();
 			setViewLocation();
@@ -43,6 +46,7 @@ namespace yooin
 			btnLogin.BorderRadius = 3;
 			lblVerson.FontSize = 15;
 			lblVerson.TextColor = CustomColor.PureWithe;
+			lblVerson.Text = lblVerson.Text + this.sVersion;
 			lblTitleName.TextColor = CustomColor.PureWithe;
 			tap.Tapped += Tap_Tapped;
 			imgSettings.GestureRecognizers.Add(tap);
@@ -64,7 +68,7 @@ namespace yooin
 			objContent.setCustomView(blueHeader2, 0, .9, 1, .1);
 			//header verde
 			//objContent.setCustomViewRelative(blueHeader2, line2, -1, -1.002, 1, .004);
-			//objContent.setCustomView(imgSettings, .9, .9, .08, .08);
+			objContent.setCustomView(imgSettings, .9, .9, .08, .08);
 			objContent.setCustomView(lblVerson, .05, .92, .6, .1);
 
 

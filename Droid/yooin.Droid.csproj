@@ -116,6 +116,7 @@
     <Compile Include="GcmService.cs" />
     <Compile Include="SQLite_Droid.cs" />
     <Compile Include="BackgroundBroadcastReciever.cs" />
+    <Compile Include="CustomRender\CustomEntryRender.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -132,6 +133,7 @@
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable\yoiinlogo.png" />
+    <AndroidResource Include="Resources\drawable\settingwhite.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomRender\" />

@@ -28,11 +28,11 @@ namespace yooin
 				return database;
 			}
 		}
-		public App()
+		public App(string sVersion)
 		{
 
 
-			nav = new NavigationPage(new LoginView());
+			nav = new NavigationPage(new LoginView(sVersion));
 			setDefaultData();
 			MainPage = nav;
 		}

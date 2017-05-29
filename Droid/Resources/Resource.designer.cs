@@ -2338,11 +2338,14 @@ namespace yooin.Droid
 			// aapt resource value: 0x7f0200be
 			public const int mr_ic_play_light = 2130837694;
 			
-			// aapt resource value: 0x7f0200c0
-			public const int notification_template_icon_bg = 2130837696;
+			// aapt resource value: 0x7f0200c1
+			public const int notification_template_icon_bg = 2130837697;
 			
 			// aapt resource value: 0x7f0200bf
-			public const int yoiinlogo = 2130837695;
+			public const int settingwhite = 2130837695;
+			
+			// aapt resource value: 0x7f0200c0
+			public const int yoiinlogo = 2130837696;
 			
 			static Drawable()
 			{
